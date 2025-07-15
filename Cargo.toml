@@ -1,0 +1,29 @@
+[package]
+name = "demosigntoolzorrochain"
+version = "0.1.0"
+edition = "2021"
+
+# core crates
+[dependencies]
+serialport           = "4.3"
+clap                 = { version = "4.5", features = ["derive"] }
+pqcrypto-dilithium   = "0.5.0"
+pqcrypto-sphincsplus = "0.7.1"
+pqcrypto-traits      = "0.3.5"
+base64               = "0.22"
+serde                = { version = "1.0", features = ["derive"] }
+serde_json           = "1.0"
+sha3                 = "0.10"
+anyhow               = "1.0"
+hex                  = "0.4"
+
+# GUI-only crates
+eframe       = { version = "0.27", optional = true }
+rfd          = { version = "0.14", optional = true }
+tokio        = { version = "1", features = ["rt", "macros", "sync"], optional = true }
+notify-rust  = { version = "4.11.7", optional = true }
+chrono       = { version = "0.4", default-features = false, features = ["clock"], optional = true }
+
+[features]
+gui     = ["eframe", "rfd", "tokio", "notify-rust", "chrono"]
+default = []
